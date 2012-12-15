@@ -1,4 +1,6 @@
 <?php
+namespace PHPExcelReader;
+
 /**
  * A class for reading Microsoft Excel (97/2003) Spreadsheets.
  *
@@ -309,7 +311,7 @@ define('SPREADSHEET_EXCEL_READER_DEF_NUM_FORMAT',	"%s");
 /*
 * Main Class
 */
-class Spreadsheet_Excel_Reader {
+class SpreadsheetReader {
 
 	// MK: Added to make data retrieval easier
 	var $colnames = array();
@@ -912,7 +914,7 @@ class Spreadsheet_Excel_Reader {
 	 *
 	 * Some basic initialisation
 	 */
-	function Spreadsheet_Excel_Reader($file='',$store_extended_info=true,$outputEncoding='') {
+	function __construct($file='',$store_extended_info=true,$outputEncoding='') {
 		$newOLE = new OLERead();
 		$this->_ole =& $newOLE;
 		$this->setUTFEncoder('iconv');

@@ -1,7 +1,9 @@
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
-require_once 'excel_reader2.php';
-$data = new Spreadsheet_Excel_Reader("example.xls");
+require __DIR__."/src/PHPExcelReader/SpreadsheetReader.php"; //better use autoloading
+use \PHPExcelReader\SpreadsheetReader as Reader;        
+
+$data = new Reader(__DIR__ . "/example.xls");
 ?>
 <html>
 <head>

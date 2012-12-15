@@ -382,7 +382,7 @@ class SpreadsheetReader {
 		return $val;
 	}
 	function hyperlink($row,$col,$sheet=0) {
-		$link = $this->sheets[$sheet]['cellsInfo'][$row][$col]['hyperlink'];
+		$link = @$this->sheets[$sheet]['cellsInfo'][$row][$col]['hyperlink'];
 		if ($link) {
 			return $link['link'];
 		}
@@ -520,16 +520,16 @@ class SpreadsheetReader {
 		return $this->xfProperty($row,$col,$sheet,'borderBottom');
 	}
 	function borderLeftColor($row,$col,$sheet=0) {
-		return $this->colors[$this->xfProperty($row,$col,$sheet,'borderLeftColor')];
+		return @$this->colors[$this->xfProperty($row,$col,$sheet,'borderLeftColor')];
 	}
 	function borderRightColor($row,$col,$sheet=0) {
-		return $this->colors[$this->xfProperty($row,$col,$sheet,'borderRightColor')];
+		return @$this->colors[$this->xfProperty($row,$col,$sheet,'borderRightColor')];
 	}
 	function borderTopColor($row,$col,$sheet=0) {
-		return $this->colors[$this->xfProperty($row,$col,$sheet,'borderTopColor')];
+		return @$this->colors[$this->xfProperty($row,$col,$sheet,'borderTopColor')];
 	}
 	function borderBottomColor($row,$col,$sheet=0) {
-		return $this->colors[$this->xfProperty($row,$col,$sheet,'borderBottomColor')];
+		return @$this->colors[$this->xfProperty($row,$col,$sheet,'borderBottomColor')];
 	}
 
 	// FONT PROPERTIES
@@ -625,7 +625,7 @@ class SpreadsheetReader {
 						}
 					}
 				}
-				if(!$this->sheets[$sheet]['cellsInfo'][$row][$col]['dontprint']) {
+				if(!@$this->sheets[$sheet]['cellsInfo'][$row][$col]['dontprint']) {
 					$style = $this->style($row,$col,$sheet);
 					if ($this->colhidden($col,$sheet)) {
 						$style .= "display:none;";

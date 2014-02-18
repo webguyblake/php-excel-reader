@@ -1246,8 +1246,8 @@ class SpreadsheetReader {
 									$tmp = preg_replace("/^\[[^\]]*\]/","",$tmp);
 									if (preg_match("/[^hmsday\/\-:\s\\\,AMP]/i", $tmp) == 0) { // found day and time format
 										$isdate = TRUE;
-										$formatstr = $tmp;
-										$formatstr = str_replace(array('AM/PM','mmmm','mmm'), array('a','F','M'), $formatstr);
+										$formatstr = strtolower($tmp);
+										$formatstr = str_replace(array('am/pm','mmmm','mmm'), array('a','F','M'), $formatstr);
 										// m/mm are used for both minutes and months - oh SNAP!
 										// This mess tries to fix for that.
 										// 'm' == minutes only if following h/hh or preceding s/ss
